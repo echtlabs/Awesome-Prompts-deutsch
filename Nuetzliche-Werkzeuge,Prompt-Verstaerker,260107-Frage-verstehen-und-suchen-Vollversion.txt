@@ -1,0 +1,142 @@
+Betrachte alles **vor** diesem Prompt (Benutzertext, Anhänge, Seitenkontext usw.) als 【Nutzeranforderung】.
+
+Deine Aufgabe: Erstelle ein **auf Evidenz basierendes, rückverfolgbares und zum heutigen Datum noch gültiges (as of today) Endprodukt**.
+Obergrundsatz: **Nichts erfinden, nichts ergänzen, zuerst Evidenz, dann Schlussfolgerung.** Alles, was nicht durch verlässliche Quellen überprüft werden kann, muss ausdrücklich als 【Unsicher / Keine verlässliche Quelle gefunden】 gekennzeichnet werden – inklusive Beschreibung der Lücke und des Wegs zur Nachprüfung.
+
+================================================
+0) Harte Regeln (Pflicht; Verstoß gilt als Fehlschlag)
+================================================
+1) Erfinden verboten: Halte Vermutungen nicht für Tatsachen; schreibe „möglicherweise / wahrscheinlich / sollte" nie als sichere Aussage.
+2) Zitiere nur Quellen, die du tatsächlich geöffnet und gelesen hast: Keine ungeöffneten Seiten anführen; keine Belege aus dem Gedächtnis erfinden.
+3) Evidenz zuerst: Jede Schlussbehauptung muss auf eine Quellennummer [1][2]… abgebildet sein (eins zu mehr ist erlaubt).
+4) Zeitkritische Informationen sind Pflicht: Schreibe „as of YYYY-MM-DD" und verifiziere, dass die Information zum Stichtag noch gilt; sonst kennzeichne als 【Unsicher】.
+5) Konflikte offenlegen: Wenn Quellen nicht übereinstimmen, Liste die Konfliktpunkte auf, zitiere beide Seiten und begründe die Gewichtung; ohne Entscheidung bleibt es 【Unsicher】.
+6) Zitierkompatibilität: Paraphrasiere möglichst; bei kurzen Zitaten diese möglichst vollständig (ohne Auslassungen) und mit Position im Quelltext (Abschnitt/Überschrift/Absatz) angeben.
+7) Transparente Berechnungen: Bei Berechnungen/Statistiken/Ableitungen die minimal notwendigen Formeln/Schritte und die Quelle der Eingabedaten angeben; nicht reproduzierbar → 【Unsicher】.
+8) Anti-Verzerrungs-Mechanismus: Führe mindestens 1 Runde „Gegenbeleg-/Gegenpositions-Recherche" durch, um reines Bestätigungsmaterial zu vermeiden.
+9) Ausgabesprache: Standardmäßig Deutsch; es sei denn, der Benutzer verlangt ausdrücklich eine andere Sprache.
+
+================================================
+1) [Time Anchor] (muss zuerst ausgegeben werden + muss die gesamte Recherche durchziehen)
+================================================
+A) Gib zuerst das Aktuelle aus: Datum + Uhrzeit + Zeitzone (IANA, z. B. Europe/Berlin) + UTC-Offset + Jahr (ISO 8601 empfohlen).
+B) Definiere die Variablen:
+   - AS_OF = Datum des Time Anchors oben (JJJJ-MM-TT)
+   - NOW_TZ = obige Zeitzone
+C) Der Zeitanker muss „tatsächlich verwendet" werden (sonst gilt die Aufgabe als unvollständig):
+   1) Bei der Recherche: Jede Suchrunde muss AS_OF ausdrücklich berücksichtigen (über „Zeitfilter / Stichwörter / Sortierung / Vergleich von Version Seiten" o. Ä.) und im Research Log festhalten, wie du AS_OF eingesetzt hast.
+   2) Bei der Auswahl: Für jede Kandidatenquelle deren „Veröffentlichungs-/Update-Datum / Zugriffszeit (Accessed on AS_OF)" und „Quellenalter (relativ zu AS_OF)" festhalten und demnach die Gewichtung senken bzw. Abgelaufenes verwerfen.
+   3) Beim Schreiben: Alle Schlussfolgerungen, die sich mit der Zeit ändern können, mit as of AS_OF kennzeichnen und die Verifizierungsweise angeben.
+
+D) „Zeitkritikalitäts-Einstufung + Freshness Gate (Ablauf-Sperre)"
+   - Stufe die Schlüsselpunkte der Nutzeranforderung nach Änderungsgeschwindigkeit (mindestens 3 Klassen):
+     H hochschwankend: Preise/Rabatte, Versionen/Funktionen, Politik/Regulierung, Termine, Personal/Ämter, Sicherheitslücken, Lager/Verfügbarkeit usw.
+     M mittelschwankend: Branchendaten, Marktanteile, Statistikdefinitionen, Leitlinien/Best Practices, institutionelle Strategien usw.
+     L niedrigschwankend: Grunddefinitionen, klassische Theorien, historische Fakten (benötigen dennoch autoritative Quellen)
+   - Definiere für jede Klasse ein akzeptables „maximales Quellenalter" (relativ zu AS_OF) und halte es im Workflow fest:
+     - Wenn für H-Klassen keine hinreichend neuen autoritativen Quellen gefunden werden: Schlussfolgerung auf 【Unsicher】 herabstufen oder als „as of AS_OF kein verifizierbares Update gefunden" umformulieren und den Nachprüfweg angeben.
+     - Wenn „ältere Quellen" verwendet werden: begründen, warum sie weiterhin gelten, und mit neueren Quellen verifizieren, soweit möglich.
+
+================================================
+2) [Restated Need] Bedarfsabgleich (erst abgleichen, dann recherchieren)
+================================================
+Stelle mit den klarsten, knappsten Worten das Ergebnis wieder, das ich wirklich brauche, und lege fest:
+- Ziel in einem Satz: Was soll am Ende geliefert werden?
+- Abnahmekriterien: Welche Bedingungen erfüllen „done"?
+- Einschränkungen & Präferenzen: Umfang, Format, Sprache, Tiefe, Budget, Fristen, Verbote
+- Interpretation mehrdeutiger Punkte: Wie verstehst du diese vagen Wörter/Grenzen?
+Wenn Informationen fehlen:
+- Stelle maximal 3 Klärungsfragen;
+- Wenn Warten nicht möglich ist: Liste die Kernannahmen auf und markiere jede mit Risiko (hoch/mittel/niedrig) und Wirkungsbereich.
+
+================================================
+3) [Workflow] Erst planen, dann handeln (zuerst ausführbaren Ablauf + klare Verifizierungsstrategie liefern)
+================================================
+Gib vor Beginn der Recherche/des Schreibens einen ausführbaren Workflow (Schritt für Schritt) aus. Jeder Schritt muss enthalten:
+- Why: Zweck
+- Inputs: benötigte Informationen/Dateien/Werkzeuge
+- Method: Recherche/Vergleich/Berechnung/Schlussfolgern/Induktion
+- Verification: Wie wird Zuverlässigkeit beurteilt, wie Kreuzvalidierung (mindestens zwei Regeln)
+- Output: Ergebnis dieses Schritts
+Und gib eine Stop-Regel (Abbruchbedingung) an, die mindestens umfasst:
+- Jede Schlussfolgerung wird von ≥2 voneinander unabhängigen hochwertigen Quellen gestützt; oder
+- Weitere Recherche liefert hochgradig Wiederholtes, keine neuen Schlüsselinformationen; oder
+- Die Abnahmekriterien sind erfüllt; oder
+- Der Grenznutzen weiterer Recherche ist unzureichend (Begründung angeben).
+
+【Eingebate Strategien zur stabilen Qualitätssicherung】
+- Lateral Reading: Bei unbekannten Quellen im Web außerhalb der Seite deren Hintergrund/Ruf/Kontroversen prüfen, bevor du tiefer gehst.
+- Click-Restraint: Auf der Suchergebnisseite zuerst Quelle und Datum sichten, nicht blind die ersten Treffer anklicken; bekannte verlässliche und jüngere Quellen bevorzugen.
+- Rückverfolgung zur Originalquelle (Trace to Original): Wo Originalstandards/Paper/Regulierungstexte/amtliche Mitteilungen/Datensätze auffindbar sind, nicht bei Sekundärberichten bleiben.
+- Gegenbeleg-Runde (Adversarial Pass): gezielt nach „Gegenposition / Einschränkung / Kontroverse / aktualisiert / abgeschafft / widerlegt / revidiert" usw. suchen und prüfen, ob die Schlussfolgerung kippt oder eingeschränkt werden muss.
+
+================================================
+4) Mehrstufige Recherche & Quellenauswahl (mehrere Runden möglich, aber fokussiert + mit klarem Protokoll der AS_OF-Nutzung)
+================================================
+Bei Internetzugang: Führe mehrere „zweckgebundene" Recherchedurchgänge aus; ohne Internetzugang: das ausdrücklich vermerken und nur auf Basis des Benutermaterials antworten.
+
+Jede Runde muss im Research Log festgehalten werden (knapp genügt):
+- Intent (Zweck dieser Runde)
+- Query (Stichwörter/Suchstring) + wie du AS_OF in diese Runde eingebracht hast (z. B. Zeitfilter, Jahr/Monat in Suchbegriffe, „updated 2025/2026" usw.)
+- Candidate Sources (3–8 Stück)
+- Auswahlbegründung (je 1 Satz: Aktualität/Relevanz/Verifizierbarkeit/Werbung & Interessenkonflikte usw.)
+
+Quellenpriorität (hoch → niedrig):
+1) Primärquellen: Offizielle Stellen/Regulierungsbehörden/Normungsinstitute/Originalpaper/autoritative Datenbanken/offizielle Dokumentation
+2) Hochwertige Sekundärquellen: Autoritative Institutionen/bekannte Medien (bestens rückverfolgbar zur Primärquelle)
+3) Übrige Quellen: nur ergänzend; Einschränkungen explizit nennen und Gewichtung senken
+
+【Quellenbewertung & Abwertung (empfohlen als einfaches Scoring oder Labels)】
+- Currency (Alter relativ zu AS_OF, Ob es Update-/Revisionsmerkmale gibt)
+- Authority (Qualifikation von Autor:in/Institution, ob autoritativ/peer-reviewed/regulatorisch)
+- Accuracy & Verifiability (Ob Evidenz, Methoden, Daten, nachprüfbare Zitationsketten angegeben werden)
+- Purpose & COI (Ob Werbung/Verkaufsabsicht/starke Position/Interessenbeteiligung vorliegt)
+- Relevance (Ob die Frage direkt beantwortet wird)
+Anforderungen:
+- Zentrale Fakten müssen von ≥2 unabhängigen Quellen gestützt sein;
+- Wenn nur 1 Quelle existiert: als 【Evidenz unzureichend】 markieren und den konkreten Verifizierungsweg angeben.
+
+================================================
+5) Zuerst Evidenz, dann Schlussfolgerung (Halluzinationsprävention)
+================================================
+Gib zuerst die 【Key Evidence】 aus (überprüfbare Punkte/Daten/Definitionen, die direkt mit deinen Schlussfolgerungen zusammenhängen):
+- Jede Evidenz muss eine Quellennummer [1][2]… tragen und vermerken, dass sie „as of AS_OF" gilt
+- Für jede Evidenz das Veröffentlichungs-/Update-Datum der Quelle, Accessed on AS_OF und das Quellenalter (relativ zu AS_OF) angeben
+- Sehr kurze Zitate sind erlaubt (möglichst vollständig, ohne Auslassungen) – inklusive Position
+
+Gib danach 【Minimal Reasoning】 aus:
+- Nur das Schlussfolgern/Berechnen, das zum Verbinden der Evidenz mit der Schlussfolgerung notwendig ist
+- Keine unbegründete Erweiterung; notwendige Annahmen ausdrücklich kennzeichnen und mit Risikobewertung versehen
+
+【Konfidenz der Schlussfolgerung (Pflicht)】
+- Für jede Schlussfolgerung: Confidence = hoch/mittel/niedrig
+- Begründung: Anzahl und Unabhängigkeit der Quellen, Autorität, Aktualität (relativ zu AS_OF), Übereinstimmung/Konflikte
+
+================================================
+6) Struktur der Endausgabe (Reihenfolge ist Pflicht)
+================================================
+A. [Time Anchor] Aktuelles Datum/Uhrzeit/Zeitzone (mit Jahr) + Variable AS_OF
+B. [Restated Need] Bedarfsdarstellung + Einschränkungen + Klärungsfragen/Annahmen (mit Risiken)
+C. [Workflow] Ausführbare Schrittliste + Freshness Gate (H/M/L) + Stop-Regel
+D. [Key Evidence & Minimal Reasoning]
+   - Key Evidence (nummeriert, mit Zitaten, mit as of AS_OF)
+   - Minimal Reasoning (notwendige Schlussfolgerungen)
+   - Research Log (1–3 Zeilen pro Runde; die AS_OF-Nutzung muss dokumentiert sein)
+   - Conflicts (falls Konflikte: Konfliktpunkte, Evidenz beider Seiten, deine Behandlung)
+E. [Final Deliverable] (direkt verwendbar/ausführbar)
+F. [Uncertainty & Risks]
+   - Unsicherheiten/mögliche Änderungspunkte (inkl. as of AS_OF)
+   - Empfohlene Nachprüfung (welche Primärquellen zuerst, welche Stichwörter, welche Update-Felder beachten)
+G. [References / Evidence Trail] (Pflicht)
+   - Nummeriert [1][2]…: Titel | Herausgeber | Veröffentlichungs-/Update-Datum | Accessed on AS_OF | URL | Verwendungsort (Abschnitt/Absatz) | Kurzzitat (möglichst vollständig, ohne Auslassungen)
+   - Sicherstellen: Jede Schlussbehauptung ist auf 1 oder mehr Quellennummern rückverfolgbar
+
+================================================
+7) Selbstcheck vor der Lieferung (Pflicht)
+================================================
+- Gibt es Sätze, die „wie Tatsachen klingen", aber ohne Quelle sind? → Quelle ergänzen oder auf 【Unsicher】 umstellen
+- Wurde in jeder Rechercherunde im Research Log erklärt, wie AS_OF genutzt wurde? → sonst nachholen
+- Bestehen alle zeitkritischen Schlussfolgerungen die Freshness Gate? → sonst herabstufen/nachrecherchieren/unsicher markieren
+- Werden Schlussfolgerungen von ≥2 unabhängigen hochwertigen Quellen gestützt? → sonst Konfidenz herabstufen und Lücke benennen
+- Sind Konflikte offen dargestellt und rückverfolgbar? → sonst ergänzen
+- Sind die Schlussfolgerungen konsistent mit der Evidenz, nachprüfbar und rückverfolgbar? → sonst korrigieren

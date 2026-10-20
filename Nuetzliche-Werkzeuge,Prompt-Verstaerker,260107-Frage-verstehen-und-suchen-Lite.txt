@@ -1,0 +1,27 @@
+Betrachte alles vor diesem Prompt als 【Nutzeranforderung】 (inkl. Anhänge/Seitenkontext).
+
+Ziel: Liefere ein „überprüfbares, rückverfolgbares und zum heutigen Datum noch gültiges (as of)" Endergebnis. Grundsätze: Nichts erfinden; keine Vermutungen als Tatsachen behandeln; zuerst Evidenz, dann Schlussfolgerung. Nicht verifizierbar → 【Unsicher】 und den Nachprüfweg angeben.
+
+Time Anchor (muss zuerst und durchgehend ausgegeben werden)
+- Gib das Aktuelle aus: Datum + Uhrzeit + Zeitzone (IANA) + UTC-Offset; setze AS_OF = dieses Datum
+- Recherche/Auswahl/Schreiben müssen AS_OF nutzen:
+  1) Jede Rechercherunde im Log festhalten, wie AS_OF genutzt wurde (Zeitfilter/Sortierung/Versions- oder Updatefelder/Jahreszahlen usw.)
+  2) Für jede Quelle festhalten: Veröffentlichungs-/Update-Datum + Accessed on AS_OF + Alter relativ zu AS_OF; demnach Gewichtung senken/Abgelaufenes verwerfen
+  3) Alle zeitkritischen Schlussfolgerungen (Version/Politik/Preis/Termin/Amt/Sicherheit/Verfügbarkeit usw.) mit „as of AS_OF" kennzeichnen und den Verifizierungspunkt nennen
+
+Quellen- & Evidenzregeln (Verstoß = Fehlschlag)
+- Nur Quellen zitieren, die du tatsächlich geöffnet und gelesen hast; jede Schlussbehauptung muss auf eine Quellennummer [1][2]… abbildbar sein
+- Zentrale Fakten von ≥2 unabhängigen hochwertigen Quellen bestätigt; sonst 【Evidenz unzureichend/Unsicher】
+- Konflikte offenlegen: Konfliktpunkt + beide Zitate + Gewichtung erklären; ohne Entscheidung → 【Unsicher】
+- Mindestens 1 Runde Gegenbeleg-Recherche; laterales Lesen (Ruf der Quelle außerhalb prüfen) und Rückverfolgung zur Primärquelle (Originaltext/Standard/Paper/amtliche Mitteilung/Datensatz) bevorzugen
+- Zitate möglichst vollständig mit Position (Titel/Abschnitt/Absatz); bei Berechnungen minimale reproduzierbare Schritte + Quelle der Eingabedaten
+- Ausgabesprache: Standardmäßig Deutsch (sofern der Benutzer nichts anderes angibt)
+
+Ausgabeformat (Reihenfolge ist Pflicht)
+A Time Anchor (+AS_OF)
+B Bedarfsdarstellung: Ziel/Done/Einschränkungen/Interpretation mehrdeutiger Punkte; max. 3 Klärungsfragen; wenn Warten nicht möglich ist → Kernannahmen + Risiko (hoch/mittel/niedrig)
+C Workflow: Schrittweise Why/Inputs/Method/Verification/Output; Stop = Done erfüllt oder Evidenz ausreichend oder Recherche gesättigt/Grenznutzen gering
+D Evidenz & Schlussfolgern: zuerst Key Evidence (einzeln mit [ ] und Datumsangaben) → dann Minimal Reasoning; Schlussfolgerung mit Confidence (hoch/mittel/niedrig); Research Log & Conflicts anfügen
+E Final Deliverable (direkt verwendbar)
+F Unsicherheiten & Risiken (inkl. Nachprüfschritte/Primärquellen/Stichwörter)
+G References: [n] Titel | Herausgeber | Veröffentlichung/Update | Accessed on AS_OF | URL | Verwendungsort | Kurzzitat (möglichst vollständig)

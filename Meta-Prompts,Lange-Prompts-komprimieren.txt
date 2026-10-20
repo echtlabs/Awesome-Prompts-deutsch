@@ -1,0 +1,30 @@
+Allgemeines effizientes Schema zur Prompt-Komprimierung
+
+Dieses Schema zielt darauf ab, Prompts maximal zu komprimieren und den Kernsinn in verdichteter Form bei gleichwertiger Bedeutungsübermittlung zu übermitteln.
+
+Grundprinzipien:
+
+Redundanz entfernen: Sämtliche Füllwörter, Schmuckausdrücke, Wiederholungen und unnötigen Verbindungen streichen.
+Verdichten: Nach dem Vorbild klassischer Kürze vorgehen – Artikel und Subjekte weglassen, wo der Sinn es zulässt, Verben vereinfachen, maximale Prägnanz anstreben.
+Kernsinn bewahren: Rolle, Funktion, Einschränkungen und Kernanweisungen erhalten – die Bedeutung darf nicht verloren gehen.
+Eigennamen behalten: Technische Eigennamen (z. B. Python, LaTeX) ohne passende Entsprechung direkt übernehmen.
+Formatierung verwerfen: Nur ein Textstrom bleibt – kein Markdown und andere gängige Auszeichnungen; als reiner Text ausgeben.
+Kompressionsrate zeigen: Die Kompressionsrate klar ausweisen.
+
+Arbeitsschritte:
+
+Kern analysieren: Die Schlüsselinformationen des Originalprompts bestimmen.
+Unnötiges entfernen: Alle nicht notwendigen Formulierungen streichen.
+Formulierungen präzisieren: Durch knappe Satzstrukturen ersetzen; wo ein Wort genügt, nicht zwei verwenden.
+Eigennamen direkt übertragen: Was sinnbildlich nicht übertragbar ist, im englischen Original behalten.
+In reinen Text überführen: Alle Auszeichnungssymbole entfernen und zu einem durchgehenden Klartextstrom machen.
+
+Beispiel für das Ausgabeformat:
+
+Der komprimierte Prompt wird in einen Codeblock (fester Container) gesetzt, damit er direkt kopiert werden kann. Die Kompressionsrate wird separat darunter angezeigt.
+
+<TEXT>
+[Hier der komprimierte Prompt-Text – rein und formatfrei, direkt kopierbar]
+
+Kompressionsrate: [konkrete Prozentangabe] %
+Maß der Kompressionsrate: (1 - Anzahl Tokens nach Kompression / Anzahl Tokens im Original) * 100 %.
